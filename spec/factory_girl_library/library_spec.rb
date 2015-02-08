@@ -2,27 +2,7 @@ require 'spec_helper'
 
 require 'factory_girl_library/library'
 
-Post = Class.new(ActiveRecord::Base) do
-  self.table_name = 'posts'
-end
-
-FactoryGirl.define do
-  factory :post do
-    title 'Some Interesting title'
-  end
-end
-
 describe FactoryGirlLibrary::Library do
-  before  do
-    db.drop_table(:posts) if db.table_exists?(:posts) 
-
-    db.create_table(:posts) do |t|
-      t.string :title
-    end
-
-    described_class.clear 
-  end
-
   describe '#create' do
     def create opts = {}
       described_class.create(:post, opts)

@@ -28,6 +28,8 @@ require 'pry-byebug'
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
+Post = Class.new(ActiveRecord::Base)
+
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include DB
@@ -40,4 +42,13 @@ RSpec.configure do |config|
                                             database: "library_test_db", 
                                             username: "root")
   end   
+
+  config.before :each do
+    db.drop_table(:posts) if db.table_exists?(:posts) 
+    db.create_table(:posts) do |t|
+      t.string :title
+    end
+
+    FactoryGirlLibrary::Library.clear
+  end
 end

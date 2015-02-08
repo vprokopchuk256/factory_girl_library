@@ -9,7 +9,7 @@ describe FactoryGirlLibrary::FactoryGirl::FactoryDecorator do
 
     it { is_expected.to eq(:post) }
 
-    it 'strill created post object'  do
+    it 'still created post object'  do
       expect{ subject }.to change(Post, :count).by(1)
     end
   end

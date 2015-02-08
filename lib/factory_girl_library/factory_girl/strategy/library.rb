@@ -2,16 +2,14 @@ module FactoryGirlLibrary
   module FactoryGirl
     module Strategy
       class Library
-        def initialize
-          @strategy = ::FactoryGirl.strategy_by_name(:create).new
+        def association(runner)
+          runner.run
         end
-
-        delegate :association, to: :@strategy
 
         def result(evaluation)
-          @strategy.result(evaluation)
-        end
-      end     
+          FactoryGirlLibrary::Library.create(::FactoryGirl::Factory.last_run_factory, evaluation.hash)
+        end     
+      end
     end
   end
 end
