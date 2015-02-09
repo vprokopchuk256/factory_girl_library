@@ -3,7 +3,7 @@ require 'spec_helper'
 describe FactoryGirlLibrary::FactoryGirl::FactoryDecorator do
   describe '#last_run_factory' do
     subject do 
-      ::FactoryGirl.create(:post)
+      create(:post)
       ::FactoryGirl::Factory.last_run_factory
     end
 

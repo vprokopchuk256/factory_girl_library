@@ -30,6 +30,10 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 Post = Class.new(ActiveRecord::Base)
 
+Comment = Class.new(ActiveRecord::Base) do
+  belongs_to :post
+end
+
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include DB
@@ -47,6 +51,12 @@ RSpec.configure do |config|
     db.drop_table(:posts) if db.table_exists?(:posts) 
     db.create_table(:posts) do |t|
       t.string :title
+    end
+
+    db.drop_table(:comments) if db.table_exists?(:comments) 
+    db.create_table(:comments) do |t|
+      t.string :title
+      t.integer :post_id
     end
 
     FactoryGirlLibrary::Library.clear
