@@ -22,7 +22,7 @@ require 'rspec/rails'
 require 'rspec/its'
 require 'active_record'
 require 'factory_girl_library'
-require 'pry-byebug'
+# require 'pry-byebug'
 
 require 'coveralls'
 Coveralls.wear!
