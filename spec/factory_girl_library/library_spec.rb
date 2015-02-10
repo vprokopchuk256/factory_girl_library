@@ -3,7 +3,12 @@ require 'spec_helper'
 require 'factory_girl_library/library'
 
 describe FactoryGirlLibrary::Library do
-  before { described_class.clear }
+
+  before do
+    FactoryGirlLibrary::Library.clear
+    Comment.delete_all
+    Post.delete_all
+  end
 
   describe '#get' do
     subject { described_class.get(:post, title: :new_title) }

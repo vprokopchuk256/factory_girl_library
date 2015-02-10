@@ -2,9 +2,15 @@ require 'spec_helper'
 
 
 describe FactoryGirlLibrary::FactoryGirl::Strategy::Library do
+  self.use_transactional_fixtures = false
+
   subject{ library(:comment, title: :title) }
 
   before do
+    FactoryGirlLibrary::Library.clear
+    Comment.delete_all
+    Post.delete_all
+
     expect(FactoryGirlLibrary::Library).to receive(:register)
                                           .ordered
                                           .with(:post, instance_of(Post))
@@ -17,14 +23,10 @@ describe FactoryGirlLibrary::FactoryGirl::Strategy::Library do
                                           .and_call_original
   end
 
-  it 'should create object' do
-    expect{ subject }.to change(Comment, :count).by(1)
-  end
-
   its(:title) { is_expected.to eq('title') }
 
   it 'is available inside transaction and stays outside' do
-    ActiveRecord::Base.connection.transaction(isolation: :read_committed) do
+    ActiveRecord::Base.connection.transaction do
       expect{ subject }.to change(Comment, :count).by(1)
       expect(Comment.first.title).to eq('title')
 

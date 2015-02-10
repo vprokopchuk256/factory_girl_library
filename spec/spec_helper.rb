@@ -22,7 +22,7 @@ require 'rspec/rails'
 require 'rspec/its'
 require 'active_record'
 require 'factory_girl_library'
-# require 'pry-byebug'
+require 'pry-byebug'
 
 require 'coveralls'
 Coveralls.wear!
@@ -40,7 +40,6 @@ end
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include DB
-  config.use_transactional_fixtures = false
   
   config.before :all do
     ::ActiveRecord::Base.remove_connection if ::ActiveRecord::Base.connected?
@@ -50,18 +49,15 @@ RSpec.configure do |config|
                                             username: "root")
   end   
 
-  config.before :each do
-    db.drop_table(:posts) if db.table_exists?(:posts) 
+  config.before :all do
     db.create_table(:posts) do |t|
       t.string :title
-    end
+    end unless db.table_exists?(:posts)
 
-    db.drop_table(:comments) if db.table_exists?(:comments) 
     db.create_table(:comments) do |t|
       t.string :title
       t.integer :post_id
-    end
-
-    FactoryGirlLibrary::Library.clear
+    end unless db.table_exists?(:comments)
   end
+
 end

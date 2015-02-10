@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe FactoryGirlLibrary::FactoryGirl::FactoryDecorator do
+  before do
+    FactoryGirlLibrary::Library.clear
+    Comment.delete_all
+    Post.delete_all
+  end
+  
   describe '#last_run_factory' do
     subject do 
       create(:post)

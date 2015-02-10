@@ -14,11 +14,22 @@ FactoryGirl.send(:extend, FactoryGirlLibrary::FactoryGirl::FactoryGirlClassDecor
 FactoryGirl::Syntax::Methods.send(:prepend, FactoryGirlLibrary::FactoryGirl::Syntax::MethodsDecorator)
 
 RSpec.configure do |config|
-  config.around :each do |test|
-    test.run
-  end
+    config.around :each do |test|
+      if use_transactional_fixtures != false
+        self.use_transactional_fixtures = false
 
-  config.after :all do
-    FactoryGirlLibrary::Library.clear
-  end
+        ::ActiveRecord::Base.connection.transaction(isolation: :read_committed) do
+          test.run
+          raise ::ActiveRecord::Rollback
+        end
+
+        self.use_transactional_fixtures = true
+      else
+        test.run
+      end
+    end
+
+    config.after :all do
+      FactoryGirlLibrary::Library.clear
+    end
 end
