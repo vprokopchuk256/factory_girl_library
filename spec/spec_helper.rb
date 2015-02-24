@@ -31,6 +31,9 @@ Coveralls.wear!
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
+ActiveRecord::Base.raise_in_transactional_callbacks = true
+ActiveRecord::Base.after_rollback { |record| FactoryGirlLibrary::Library.reload(record) }
+
 Post = Class.new(ActiveRecord::Base)
 
 Comment = Class.new(ActiveRecord::Base) do

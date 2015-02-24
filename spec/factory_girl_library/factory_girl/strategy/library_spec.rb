@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe FactoryGirlLibrary::FactoryGirl::Strategy::Library do
   self.use_transactional_fixtures = false
 
@@ -26,7 +25,7 @@ describe FactoryGirlLibrary::FactoryGirl::Strategy::Library do
   its(:title) { is_expected.to eq('title') }
 
   it 'is available inside transaction and stays outside' do
-    ActiveRecord::Base.connection.transaction do
+    ActiveRecord::Base.connection.transaction(isolation: :read_committed) do
       expect{ subject }.to change(Comment, :count).by(1)
       expect(Comment.first.title).to eq('title')
 
@@ -35,5 +34,6 @@ describe FactoryGirlLibrary::FactoryGirl::Strategy::Library do
 
     expect(Comment.first).not_to be_blank
     expect(Comment.first.title).to eq('Some Interesting title')
+    expect(library(:comment).title).to eq('Some Interesting title')
   end
 end

@@ -22,8 +22,8 @@ module FactoryGirlLibrary
       end
     end
 
-    def reload name
-      @library[name].try(:reload)
+    def reload object
+      object.reload if @library.value?(object) and object.respond_to?(:reload)
     end
 
     def clear

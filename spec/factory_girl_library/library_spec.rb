@@ -3,6 +3,7 @@ require 'spec_helper'
 require 'factory_girl_library/library'
 
 describe FactoryGirlLibrary::Library do
+  self.use_transactional_fixtures = false
 
   before do
     FactoryGirlLibrary::Library.clear
@@ -32,7 +33,7 @@ describe FactoryGirlLibrary::Library do
 
     it 'reloads registered object' do
       expect(post).to receive(:reload)
-      described_class.reload(:post)
+      described_class.reload(post)
     end
   end
 
