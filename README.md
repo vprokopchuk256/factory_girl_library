@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/vprokopchuk256/factory_girl_library.svg?branch=development)](https://travis-ci.org/vprokopchuk256/factory_girl_library)
+[![Coverage Status](https://coveralls.io/repos/vprokopchuk256/factory_girl_library/badge.svg?branch=development)](https://coveralls.io/r/vprokopchuk256/factory_girl_library?branch=development)
+
 # Factories can be fast
 
 Personally I love [Rspec](https://github.com/rspec/rspec) and [FactoryGirl](https://github.com/thoughtbot/factory_girl). Both libraries are very eloquent and very comfortable to use. Especially when one writes tests following [best practices](http://betterspecs.org/).
