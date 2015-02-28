@@ -18,7 +18,7 @@ describe FactoryGirlLibrary::Library do
       before { described_class.register(:post, create(:post)) }
       
       it { is_expected.not_to be_blank }
-      its(:title) { is_expected.to eq('new_title') }
+      its(:title) { is_expected.to eq(:new_title) }
     end
 
     describe "when object is not registered" do

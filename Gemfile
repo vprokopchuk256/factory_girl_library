@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
 gem "rspec-rails", ">= 3.0"
-gem "factory_girl", ">= 3.0"
+gem "factory_girl", ">= 2.0"
 gem "rails", ">= 3.2"
 
 group :development do

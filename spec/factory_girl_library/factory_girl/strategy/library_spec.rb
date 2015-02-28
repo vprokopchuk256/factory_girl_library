@@ -22,12 +22,12 @@ describe FactoryGirlLibrary::FactoryGirl::Strategy::Library do
                                           .and_call_original
   end
 
-  its(:title) { is_expected.to eq('title') }
+  its(:title) { is_expected.to eq(:title) }
 
   it 'is available inside transaction and stays outside' do
     ActiveRecord::Base.connection.transaction(isolation: :read_committed) do
       expect{ subject }.to change(Comment, :count).by(1)
-      expect(Comment.first.title).to eq('title')
+      expect(Comment.first.title).to eq("title")
 
       raise ActiveRecord::Rollback
     end
