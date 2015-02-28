@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/vprokopchuk256/factory_girl_library.svg?branch=development)](https://travis-ci.org/vprokopchuk256/factory_girl_library)
 [![Coverage Status](https://coveralls.io/repos/vprokopchuk256/factory_girl_library/badge.svg?branch=development)](https://coveralls.io/r/vprokopchuk256/factory_girl_library?branch=development)
+[![Gem Version](https://badge.fury.io/rb/factory_girl_library.svg)](http://badge.fury.io/rb/factory_girl_library)
 
 # Factories can be fast
 
