@@ -216,7 +216,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.0)
   coveralls (~> 0.7)
-  factory_girl (>= 2.0)
+  factory_girl (>= 4.0)
   guard-rspec (~> 4.5)
   jeweler (~> 2.0.1)
   mysql2

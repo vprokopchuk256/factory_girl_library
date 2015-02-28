@@ -11,53 +11,93 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Valeriy Prokopchuk"]
-  s.date = "2015-02-05"
-  s.description = "TODO: longer description of your gem"
+  s.date = "2015-02-28"
+  s.description = "Fast FactoryGirl factories"
   s.email = "vprokopchuk@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
+    ".coveralls.yml",
     ".document",
     ".rspec",
+    ".travis.yml",
     "Gemfile",
+    "Gemfile.lock",
+    "Guardfile",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
-    "spec/spec_helper.rb"
+    "db/test_db",
+    "factory_girl_library.gemspec",
+    "lib/factory_girl_library.rb",
+    "lib/factory_girl_library/factory_girl/factory_decorator.rb",
+    "lib/factory_girl_library/factory_girl/factory_girl_class_decorator.rb",
+    "lib/factory_girl_library/factory_girl/strategy/library.rb",
+    "lib/factory_girl_library/factory_girl/syntax/methods_decorator.rb",
+    "lib/factory_girl_library/library.rb",
+    "lib/factory_girl_library/railtie.rb",
+    "spec/factory_girl_library/factory_girl/factory_decorator_spec.rb",
+    "spec/factory_girl_library/factory_girl/factory_girl_class_decorator_spec.rb",
+    "spec/factory_girl_library/factory_girl/strategy/library_spec.rb",
+    "spec/factory_girl_library/library_spec.rb",
+    "spec/factory_girl_library_spec.rb",
+    "spec/spec_helper.rb",
+    "spec/support/db.rb",
+    "spec/support/factories/comment.rb",
+    "spec/support/factories/post.rb"
   ]
   s.homepage = "http://github.com/vprokopchuk256/factory_girl_library"
   s.licenses = ["MIT"]
+  s.required_ruby_version = Gem::Requirement.new(">= 2.0")
   s.rubygems_version = "2.4.4"
-  s.summary = "TODO: one-line summary of your gem"
+  s.summary = "Fast FactoryGirl factories"
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<rspec-core>, [">= 3.0.0"])
-      s.add_runtime_dependency(%q<factory_girl>, [">= 4.0.0"])
+      s.add_runtime_dependency(%q<rspec-rails>, [">= 3.0"])
+      s.add_runtime_dependency(%q<factory_girl>, [">= 4.0"])
+      s.add_runtime_dependency(%q<rails>, [">= 3.2"])
+      s.add_development_dependency(%q<mysql2>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 2.0.1"])
-      s.add_development_dependency(%q<simplecov>, [">= 0"])
+      s.add_development_dependency(%q<simplecov>, ["~> 0"])
+      s.add_development_dependency(%q<sqlite3>, ["~> 1.3"])
+      s.add_development_dependency(%q<rspec-its>, ["~> 1.1"])
+      s.add_development_dependency(%q<coveralls>, ["~> 0.7"])
+      s.add_development_dependency(%q<guard-rspec>, ["~> 4.5"])
     else
-      s.add_dependency(%q<rspec-core>, [">= 3.0.0"])
-      s.add_dependency(%q<factory_girl>, [">= 4.0.0"])
+      s.add_dependency(%q<rspec-rails>, [">= 3.0"])
+      s.add_dependency(%q<factory_girl>, [">= 4.0"])
+      s.add_dependency(%q<rails>, [">= 3.2"])
+      s.add_dependency(%q<mysql2>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<bundler>, ["~> 1.0"])
       s.add_dependency(%q<jeweler>, ["~> 2.0.1"])
-      s.add_dependency(%q<simplecov>, [">= 0"])
+      s.add_dependency(%q<simplecov>, ["~> 0"])
+      s.add_dependency(%q<sqlite3>, ["~> 1.3"])
+      s.add_dependency(%q<rspec-its>, ["~> 1.1"])
+      s.add_dependency(%q<coveralls>, ["~> 0.7"])
+      s.add_dependency(%q<guard-rspec>, ["~> 4.5"])
     end
   else
-    s.add_dependency(%q<rspec-core>, [">= 3.0.0"])
-    s.add_dependency(%q<factory_girl>, [">= 4.0.0"])
+    s.add_dependency(%q<rspec-rails>, [">= 3.0"])
+    s.add_dependency(%q<factory_girl>, [">= 4.0"])
+    s.add_dependency(%q<rails>, [">= 3.2"])
+    s.add_dependency(%q<mysql2>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
     s.add_dependency(%q<bundler>, ["~> 1.0"])
     s.add_dependency(%q<jeweler>, ["~> 2.0.1"])
-    s.add_dependency(%q<simplecov>, [">= 0"])
+    s.add_dependency(%q<simplecov>, ["~> 0"])
+    s.add_dependency(%q<sqlite3>, ["~> 1.3"])
+    s.add_dependency(%q<rspec-its>, ["~> 1.1"])
+    s.add_dependency(%q<coveralls>, ["~> 0.7"])
+    s.add_dependency(%q<guard-rspec>, ["~> 4.5"])
   end
 end
 

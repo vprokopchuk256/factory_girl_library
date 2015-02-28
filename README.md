@@ -1,5 +1,3 @@
-# !!!Is under development!!!
-
 # Factories can be fast
 
 Personally I love [Rspec](https://github.com/rspec/rspec) and [FactoryGirl](https://github.com/thoughtbot/factory_girl). Both libraries are very eloquent and very comfortable to use. Especially when one writes tests following [best practices](http://betterspecs.org/).

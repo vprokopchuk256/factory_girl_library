@@ -16,11 +16,11 @@ Jeweler::Tasks.new do |gem|
   gem.name = "factory_girl_library"
   gem.homepage = "http://github.com/vprokopchuk256/factory_girl_library"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = "Fast FactoryGirl factories"
+  gem.description = "Fast FactoryGirl factories"
   gem.email = "vprokopchuk@gmail.com"
   gem.authors = ["Valeriy Prokopchuk"]
-  # dependencies defined in Gemfile
+  gem.required_ruby_version = '>= 2.0'
 end
 Jeweler::RubygemsDotOrgTasks.new
 
