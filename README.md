@@ -69,11 +69,11 @@ describe 'once more interesting Post instance behavior' do
 end
 ```
 
-That is important to understand that library internally stores object instance without additionall parameter applied and apply custom attributes to the cached object. 
+That is important to understand that library internally stores original object instance without additional parameters are applied and only after that applies custom attributes to already cached object version
 
-After each test object is reverted back in the database ( db transaction is responsible for that ) and reloaded in the momory after that. So ```factory_girl_library``` takes care of db and memory objec synchronization. 
+After each test object is reverted back in the database ( db transaction is responsible for that ) and reloaded into the memory after that. So ```factory_girl_library``` takes care of db and memory object synchronization. 
 
-Also ```after :all``` hook is defined internally. It clears all created objects from the database after ALL tests are run.  
+Also ```after :all``` hook is defined internally. It destroys all objects that were created by the tests.
 
 # Installation
 
@@ -85,8 +85,8 @@ In Gemfile:
 
 # When you should use it
 
-* You have a lot of tests where object instances are creaated. 
-* You trying to make test as atomic as possible. 
+* You have bunch of simple tests that creates data examples internally 
+* You are trying to make test as atomic as possible. 
   So one object instance is described / used in the most of your test cases.  
 
 # When you should NOT use it
@@ -116,5 +116,20 @@ You could see that message because ```factory_girl_library``` uses ```after_roll
 
 That warning message could be easily suppressed as described [here](http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#error-handling-in-transaction-callbacks).
 
+## Version History
+
+**(1.0.0)** (27 Feb, 2015)
+
+* First version
+
+## Contributing
+
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
+* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
+* Fork the project
+* Start a feature/bugfix branch
+* Commit and push until you are happy with your contribution
+* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
 
